@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block head %}
+  this is the index page
+{% endblock %}
+
+{% block body %}
+<ol>
+  {% for candidate in candidates %}
+    <li>
+      Candidate:<br/>
+      Last Name: {{ candidate.lastname }} <br />
+      First Name: {{ candidate.firstname }} <br />
+      {{ candidate.position }} <br />
+      Votes: {{ vote.vote_datetime }} <br />
+      <a class="waves-effect waves-light btn-small" href="{% url 'votes:detail' candidate.id %}"> Candidate Details </a>
+    </li>
+  {% endfor %}
+</ol>
+<br/>
+<br/>
+<a class="waves-effect waves-light btn-small" href="{% url 'votes:create' %}"> Create New Candidate </a>
+<a class="waves-effect waves-light btn-small" href="{% url 'votes:createp' %}"> Create New Position </a>
+{% endblock %}
